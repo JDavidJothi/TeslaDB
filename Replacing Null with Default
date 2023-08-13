@@ -1,0 +1,29 @@
+SELECT * FROM tblEmployee2;
+
+SELECT ISNULL('Yuvaraj','No Manager') AS Manager;
+
+SELECT COALESCE('Yuvaraj','No Manager') AS Manager;
+
+SELECT COALESCE(NULL,'No Manager') AS Manager;
+
+CASE WHEN Expression THEN '' ELSE '' END
+
+SELECT    E.Name AS Employee,ISNULL(M.Name,'No Manager') AS Manager
+FROM      tblEmployee2 E
+LEFT JOIN tblEmployee2 M
+ON        E.ManagerID = M.EmployeeID;
+
+SELECT    E.Name AS Employee,COALESCE(M.Name,'No Manager') AS Manager
+FROM      tblEmployee2 E
+LEFT JOIN tblEmployee2 M
+ON        E.ManagerID = M.EmployeeID;
+
+SELECT    E.Name AS Employee,CASE WHEN M.Name IS NULL THEN 'No Manager' ELSE M.Name END AS Manager
+FROM      tblEmployee2 E
+LEFT JOIN tblEmployee2 M
+ON        E.ManagerID = M.EmployeeID;
+
+
+
+
+
